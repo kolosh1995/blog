@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SignupForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -64,11 +65,16 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-    /**
-     * Login action.
-     *
-     * @return Response|string
-     */
+
+    public function actionSignup(){
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $model = new SignupForm();
+
+        return $this->render('signup', compact('model'));
+    }
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -125,4 +131,6 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
 }
