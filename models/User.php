@@ -19,6 +19,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     /**
      * {@inheritdoc}
      */
+
     public static function findIdentityByAccessToken($token, $type = null)
     {
 
