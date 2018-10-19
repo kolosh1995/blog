@@ -24,6 +24,12 @@ $config = [
                 ],
             ],
         ],
+        'authManager' => [
+            'class' => 'app\components\AuthManager',
+            'itemFile' => '@app/modules/admin/rbac/rules/items.php',
+            'assignmentFile' => '@app/modules/admin/rbac/rules/assignments.php',
+            'ruleFile' => '@app/modules/admin/rbac/rules/rules.php',
+        ],
         'db' => $db,
     ],
     'params' => $params,

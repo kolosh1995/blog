@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\modules\admin\rbac\Rbac as AdminRbac;
 
 AppAsset::register($this);
 ?>
@@ -37,11 +38,15 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
+        'activateParents' => true,
+        'items' =>array_filter ([
             ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Регистрация', 'url' => ['/signup']],
             ['label' => 'About', 'url' => ['/about']],
             ['label' => 'Contact', 'url' => ['/contact']],
+            Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
+                ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']] :
+                false,
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin']]
             ) : (
@@ -54,7 +59,7 @@ AppAsset::register($this);
                 . Html::endForm()
                 . '</li>'
             )
-        ],
+        ]),
     ]);
     NavBar::end();
     ?>
