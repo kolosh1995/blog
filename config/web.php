@@ -62,6 +62,16 @@ $config = [
 
             ],
         ],
+        //////////////////////////////////////////???????????
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+            ],
+        ],
+        //////////////////////////////////////////////////
     ],
     'params' => $params,
 ];

@@ -25,6 +25,19 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     }
 
+    public function rules()
+    {
+        return [
+            ['role', 'string', 'max' => 64],
+        ];
+    }
+
+//    public function attributeLabels()
+//    {
+//        return [
+//            'role' => Module::t('module', 'USER_ROLE'),
+//        ];
+//    }
     /**
      * Finds user by username
      *

@@ -45,10 +45,10 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/about']],
             ['label' => 'Contact', 'url' => ['/contact']],
             Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
-                ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']] :
+                ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/user/index']] :
                 false,
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/admin']]
+                ['label' => 'Login', 'url' => ['/admin/user/index']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
