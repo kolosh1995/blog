@@ -24,6 +24,10 @@ class RbacController extends Controller
         $adminPanel->description = 'Admin panel';
         $auth->add($adminPanel);
 
+        $userPanel = $auth->createPermission(AdminRbac::PERMISSION_USER_PANEL);
+        $userPanel->description = 'User panel';
+        $auth->add($userPanel);
+
         $user = $auth->createRole('user');
         $user->description = 'User';
         $auth->add($user);

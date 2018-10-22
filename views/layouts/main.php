@@ -47,6 +47,10 @@ AppAsset::register($this);
             Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
                 ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/user/index']] :
                 false,
+            Yii::$app->user->can(AdminRbac::PERMISSION_USER_PANEL) ?
+                ['label' => Yii::t('app', 'NAV_USER'), 'url' => ['/profile/view']] :
+                false,
+
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/admin/user/index']]
             ) : (

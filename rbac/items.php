@@ -4,6 +4,10 @@ return [
         'type' => 2,
         'description' => 'Admin panel',
     ],
+    'permUserPanel' => [
+        'type' => 2,
+        'description' => 'User panel',
+    ],
     'user' => [
         'type' => 1,
         'description' => 'User',
