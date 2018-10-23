@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\models\SignupForm;
 use app\models\User;
-use app\modules\admin\rbac\Rbac;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -28,8 +27,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                       // 'roles' => [Rbac::PERMISSION_ADMIN_PANEL],
-
+                        'roles' => ['@'],
                     ],
                 ],
             ],

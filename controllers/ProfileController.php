@@ -6,6 +6,7 @@ use app\modules\admin\rbac\Rbac;
 use Yii;
 use app\models\User;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,23 +22,22 @@ class ProfileController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'view' => [Rbac::PERMISSION_USER_PANEL],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [Rbac::PERMISSION_USER_PANEL],
+                    ],
                 ],
             ],
         ];
     }
 
-    /**
-     * Lists all User models.
-     * @return mixed
-     */
     public function actionIndex()
     {
         $id = \Yii::$app->user->identity->id;
-        return $this->render('view', [
+        return $this->render('index', [
             'model' => $this->findModel($id),
         ]);
     }

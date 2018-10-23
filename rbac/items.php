@@ -11,12 +11,14 @@ return [
     'user' => [
         'type' => 1,
         'description' => 'User',
+        'children' => [
+            'permUserPanel',
+        ],
     ],
     'admin' => [
         'type' => 1,
         'description' => 'Admin',
         'children' => [
-            'user',
             'permAdminPanel',
         ],
     ],

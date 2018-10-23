@@ -53,6 +53,7 @@ $config = [
         'db' => $db,
         'authManager' => [
             'class' => 'app\components\AuthManager',
+
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
