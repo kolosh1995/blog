@@ -1,21 +1,29 @@
 <?php
-
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\User */
 
-$this->title = 'Update User: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = Yii::t('app', 'Обновление');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Личний кабинет'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-update">
+<div class="user-profile-update">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <div class="user-form">
+
+        <?php $form = ActiveForm::begin(); ?>
+
+        <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
+        <div class="form-group">
+            <?= Html::submitButton(Yii::t('app', 'Сохранить'), ['class' => 'btn btn-primary']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+
+    </div>
 
 </div>
