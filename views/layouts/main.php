@@ -30,7 +30,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => 'Главная',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -40,24 +40,27 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'activateParents' => true,
         'items' =>array_filter ([
-            ['label' => 'Home', 'url' => ['/']],
             ['label' => 'Регистрация', 'url' => ['/signup']],
-            ['label' => 'About', 'url' => ['/about']],
-            ['label' => 'Contact', 'url' => ['/contact']],
             Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
-                ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/user/index']] :
+                ['label' => Yii::t('app', 'Админка'),
+                    'items' =>[
+                        ['label' => 'Пользователи','url' => ['/admin/user/index']],
+                        ['label' => 'Категории','url' => ['/admin/category/index']],
+                        ['label' => 'Статьи','url' => ['/admin/post/index']],
+                        ],
+                    ]:
                 false,
             Yii::$app->user->can(AdminRbac::PERMISSION_USER_PANEL) ?
-                ['label' => Yii::t('app', 'NAV_USER'), 'url' => ['/profile/index']] :
+                ['label' => Yii::t('app', 'Личный кабинет'), 'url' => ['/profile/index']] :
                 false,
 
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/login']]
+                ['label' => 'Вход', 'url' => ['/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Выход (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()

@@ -68,14 +68,14 @@ class Post extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'author_id' => 'Author ID',
-            'category_id' => 'Category ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'status' => 'Status',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
-            'image' => 'Image',
+            'author_id' => 'Автор',
+            'category_id' => 'Категория',
+            'title' => 'Название',
+            'description' => 'Текст',
+            'status' => 'Статус',
+            'created_at' => 'Дата создания',
+            'updated_at' => 'Дата обновления',
+            'image' => 'Картинка',
             'slug' => 'Slug',
         ];
     }

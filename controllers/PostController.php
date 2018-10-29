@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+
 use Yii;
 use app\models\Post;
 use yii\data\ActiveDataProvider;
+
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -36,12 +38,18 @@ class PostController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::find(),
+            'query' => Post::find()->where(['status' => 'published']),
+            'pagination' => [
+                'pageSize' => 4,
+                'pageSizeParam' => false,
+                'forcePageParam' => false,
+            ],
         ]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
         ]);
+
     }
 
     /**
@@ -50,10 +58,17 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'dataProvider' => $dataProvider,
+
         ]);
     }
 

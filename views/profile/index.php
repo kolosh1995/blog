@@ -14,8 +14,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Обновить профиль'), ['update'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Сменить пароль'), ['password-change'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Создать статью'), ['create'], ['class' => 'btn btn-primary']) ?>
-
-
     </p>
 
     <?= DetailView::widget([

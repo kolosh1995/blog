@@ -32,12 +32,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         ];
     }
 
-//    public function attributeLabels()
-//    {
-//        return [
-//            'role' => Module::t('module', 'USER_ROLE'),
-//        ];
-//    }
     /**
      * Finds user by username
      *
@@ -73,12 +67,21 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
         return $this->auth_key === $authKey;
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Логин',
+            'email' => 'E-mail',
+
+        ];
+    }
     /**
      * Validates password
      *
      * @param string $password password to validate
      * @return bool if password provided is valid for current user
      */
+
     public function validatePassword($password)
     {
         return \Yii::$app->security->validatePassword($password,$this->password);
