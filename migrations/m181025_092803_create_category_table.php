@@ -21,7 +21,7 @@ class m181025_092803_create_category_table extends Migration
             'name' => $this->string()->notNull(),
             'keywords' => $this->string()->Null(),
             'description' => $this->string()->Null()
-        ]);
+        ],$tableOptions);
     }
 
     /**
