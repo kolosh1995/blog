@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use app\modules\admin\models\Category;
 use mihaildev\ckeditor\CKEditor;
+use mihaildev\elfinder\ElFinder;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Post */
@@ -19,16 +20,14 @@ use mihaildev\ckeditor\CKEditor;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->widget(CKEditor::className(),[
-        'editorOptions' => [
-            'inline' => false,
-        ],]) ?>
+    <?php
+    echo $form->field($model, 'description')->widget(CKEditor::className(), [
+        'editorOptions' => ElFinder::ckeditorOptions('elfinder', [])
+    ]);
+
+    ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'new' => 'Новая', 'published' => 'Опубликованая', 'inactive' => 'Неактивна' ]) ?>
-
-    <?= $form->field($model, 'image')->textInput() ?>
-
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
