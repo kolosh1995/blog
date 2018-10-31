@@ -5,6 +5,8 @@ use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
+    const STATUS_ACTIVE = 10;
+    const STATUS_BANED = 0;
 
     public static function tableName()
     {
@@ -40,7 +42,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username'=>$username]);
+        return static::findOne(['username'=>$username, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**

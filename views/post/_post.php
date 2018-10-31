@@ -8,7 +8,7 @@ $this->title = 'Главная';
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><a href="<?=Url::to(['post/view','id' => $model->id])?>"><?= $model->title?></a></h3>
+                <h3 class="panel-title"><a href="#"><?= $model->title?></a></h3>
             </div>
             <div class="panel-body">
 
@@ -19,4 +19,7 @@ $this->title = 'Главная';
                 <span class="text-success"> Категория: <?=$model->category->name?></span>
             </div>
         </div>
+
+
+
 

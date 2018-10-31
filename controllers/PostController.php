@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 
+use app\modules\admin\rbac\Rbac;
 use Yii;
 use app\models\Post;
 use yii\data\ActiveDataProvider;
 
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,10 +24,13 @@ class PostController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [Rbac::PERMISSION_USER_PANEL],
+                    ],
                 ],
             ],
         ];
@@ -38,7 +43,7 @@ class PostController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::find()->where(['status' => 'published']),
+            'query' => Post::find()->where(['status' => Post::STATUS_PUBLISHED]),
             'pagination' => [
                 'pageSize' => 4,
                 'pageSizeParam' => false,
@@ -58,18 +63,21 @@ class PostController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView()
+    public function actionView($id)
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
-            'pagination' => [
-                'pageSize' => 20,
-            ],
-        ]);
         return $this->render('view', [
-            'dataProvider' => $dataProvider,
-
+            'model' => $this->findModel($id),
         ]);
+//        $dataProvider = new ActiveDataProvider([
+//            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
+//            'pagination' => [
+//                'pageSize' => 20,
+//            ],
+//        ]);
+//        return $this->render('view', [
+//            'dataProvider' => $dataProvider,
+//
+//        ]);
     }
 
     /**
@@ -121,7 +129,7 @@ class PostController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['profile/index']);
     }
 
     /**

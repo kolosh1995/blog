@@ -60,9 +60,11 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '<action:(about|contact|login|signup)>' =>'site/<action>',
-                'post/<id:\d+>' => 'post/view',
+                '<action>' => 'profile/<action>',
+                'post/view/<id:\d+>' => 'post/view',
+                'post/update/<id:\d+>' => 'post/update',
+                'category/<id:\d+>' => 'category/view',
                 'page/<page:\d+>' => 'post/index',
-                '/' => 'post/index',
 
             ],
         ],

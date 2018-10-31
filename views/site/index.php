@@ -4,6 +4,12 @@
 
 $this->title = 'My Yii Application';
 ?>
+<div class="col-sm-3">
+    <div class="left-sidebar">
+        <?= \app\components\MenuWidget::widget(['tpl' => 'menu']);?>
+    </div>
+</div>
+
 <div class="site-index">
     <div class="jumbotron">
         <h1>Congratulations!</h1>

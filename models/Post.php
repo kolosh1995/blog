@@ -28,6 +28,9 @@ class Post extends ActiveRecord
     /**
      * {@inheritdoc}
      */
+
+    const STATUS_PUBLISHED = 'published';
+
     public function behaviors()
     {
         return[

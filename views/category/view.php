@@ -1,38 +1,41 @@
 <?php
+use yii\helpers\Url;
+use yii\widgets\LinkPager;
 
-use yii\helpers\Html;
-use yii\widgets\DetailView;
-
-/* @var $this yii\web\View */
-/* @var $model app\models\Category */
-
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Статьи'
 ?>
-<div class="category-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+<div class="col-sm-3">
+    <div class="left-sidebar">
+        <?= \app\components\MenuWidget::widget(['tpl' => 'menu']);?>
+    </div>
+</div>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'name',
-            'keywords',
-            'description',
-        ],
-    ]) ?>
+<h2 class="title text-center"> Статьи</h2>
+    <?php if( !empty($posts) ): ?>
+        <?php foreach ($posts as $post): ?>
+<div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><a href=""><?= $post->title?></a></h3>
+                </div>
+                <div class="panel-body">
 
+                    <?= $post->description ?>
+                </div>
+                <div class="panel-footer ">
+                    <span class="text-danger"> Автор: <?=$post->author->username?></span>
+                    <span class="text-success"> Категория: <?=$post->category->name?></span>
+                </div>
+            </div>
+</div>
+        <?php endforeach; ?>
+<?php else: ?>
+        <h2>Здесь статей пока нет</h2>
+<?php endif; ?>
+<div class="col-sm-9">
+<?= LinkPager::widget([
+    'pagination' => $pages,
+]); ?>
 </div>

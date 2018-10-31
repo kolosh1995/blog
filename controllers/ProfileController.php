@@ -40,8 +40,17 @@ class ProfileController extends Controller
     public function actionIndex()
     {
         $id = \Yii::$app->user->identity->id;
+        $postDataProvider = new ActiveDataProvider([
+           'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
+            'pagination' => [
+                'pageSize' => 5,
+                'forcePageParam' => false,
+                'pageSizeParam' => false,
+            ],
+        ]);
         return $this->render('index', [
             'model' => $this->findModel($id),
+            'postDataProvider' => $postDataProvider,
         ]);
     }
 
