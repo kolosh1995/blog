@@ -19,6 +19,7 @@ return [
         'type' => 1,
         'description' => 'Admin',
         'children' => [
+            'user',
             'permAdminPanel',
         ],
     ],
