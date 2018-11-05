@@ -7,10 +7,7 @@
  */
 
 namespace app\commands;
-
-//Зробити модель User в Modules
 use app\models\User;
-
 use Yii;
 use yii\console\Controller;
 use yii\console\Exception;
