@@ -68,16 +68,6 @@ class PostController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
-//            'pagination' => [
-//                'pageSize' => 20,
-//            ],
-//        ]);
-//        return $this->render('view', [
-//            'dataProvider' => $dataProvider,
-//
-//        ]);
     }
 
     /**

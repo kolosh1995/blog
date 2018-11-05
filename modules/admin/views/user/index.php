@@ -24,9 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'role',
             'status',
 
-//            'created_at:datetime',
-//            'updated_at:datetime',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

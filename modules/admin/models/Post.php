@@ -25,6 +25,11 @@ use yii\db\ActiveRecord;
  */
 class Post extends ActiveRecord
 {
+    const STATUS_NEW = 'new' ;
+    const STATUS_PUBLISHED = 'published';
+    const STATUS_INACTIVE = 'inactive';
+
+
     /**
      * {@inheritdoc}
      */
@@ -57,6 +62,8 @@ class Post extends ActiveRecord
             [['title', 'status', 'slug'], 'string', 'max' => 255],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
+            ['status', 'default', 'value' => self::STATUS_NEW],
+            ['status', 'in', 'range' => [self::STATUS_NEW, self::STATUS_PUBLISHED, self::STATUS_INACTIVE]],
         ];
     }
 

@@ -12,7 +12,6 @@ use yii\filters\AccessControl;
  */
 class Module extends \yii\base\Module
 {
-
     public function behaviors()
     {
         return [
