@@ -52,12 +52,14 @@ class GeneratorController extends Controller
         }
 
         for ($i = 1; $i<= 5; $i++) {
-            $user = new User();
             if ($i == 1) {
-                $user->username = 'admin';
-                $user->role = 'admin';
-                $user->password = \Yii::$app->security->generatePasswordHash(12345);
+                $admin = new User();
+                $admin->username = 'admin';
+                $admin->role = 'admin';
+                $admin->password = \Yii::$app->security->generatePasswordHash(12345);
+                $admin->save();
             }
+            $user = new User();
             $user->username = 'user' . $i;
             $user->password = \Yii::$app->security->generatePasswordHash(12345);
             $user->save();
