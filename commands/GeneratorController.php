@@ -13,7 +13,6 @@ use app\models\Post;
 use app\models\User;
 use yii\console\Controller;
 
-
 class GeneratorController extends Controller
 {
     public function actionGen()
@@ -44,21 +43,14 @@ class GeneratorController extends Controller
             "Несколько странное обстоятельство первые годы после открытия дискретных источников. Сила радиотелескопов неве­лика, все действующие. Объект нужно искать в этом случае поглощение света очень близкие. Действующие точечные радиоисточники слились. Звездной величины, никак не об­наруживают галактической концентрации этих источников радиоизлучения оптический объект."
         );
 
-        for ($i=1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $category = new Category();
             $category->name = $res = $input[array_rand($input)];
             $category->save();
             echo 'added, id: ' . $category->id . PHP_EOL;
         }
 
-        for ($i = 1; $i<= 5; $i++) {
-            if ($i == 1) {
-                $admin = new User();
-                $admin->username = 'admin';
-                $admin->role = 'admin';
-                $admin->password = \Yii::$app->security->generatePasswordHash(12345);
-                $admin->save();
-            }
+        for ($i = 10; $i <= 15; $i++) {
             $user = new User();
             $user->username = 'user' . $i;
             $user->password = \Yii::$app->security->generatePasswordHash(12345);
@@ -66,7 +58,7 @@ class GeneratorController extends Controller
             echo 'added, id: ' . $user->id . PHP_EOL;
         }
 
-        for ($i=1; $i <= 200; $i++) {
+        for ($i = 1; $i <= 200; $i++) {
             $post = new Post();
             $post->author_id = rand(1, 5);
             $post->category_id = rand(1, 30);
