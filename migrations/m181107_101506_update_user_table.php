@@ -12,7 +12,7 @@ class m181107_101506_update_user_table extends Migration
      */
     public function Up()
     {
-        $this->alterColumn('user', 'auth_key', 'string NULL');
+        $this->alterColumn('user', 'auth_key', $this->string(32));
     }
 
     /**
@@ -20,23 +20,8 @@ class m181107_101506_update_user_table extends Migration
      */
     public function Down()
     {
-        echo "m181107_101506_update_user_table cannot be reverted.\n";
-
-        return false;
+        $this->alterColumn('user', 'auth_key', $this->string(32)->notNull());
     }
 
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m181107_101506_update_user_table cannot be reverted.\n";
-
-        return false;
-    }
-    */
+  
 }
