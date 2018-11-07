@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+
 /* @var $content string */
 
 use app\widgets\Alert;
@@ -39,23 +40,23 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'activateParents' => true,
-        'items' =>array_filter ([
+        'items' => array_filter([
             ['label' => 'Регистрация', 'url' => ['/signup']],
             Yii::$app->user->can(AdminRbac::PERMISSION_ADMIN_PANEL) ?
                 ['label' => Yii::t('app', 'Админка'),
-                    'items' =>[
-                        ['label' => 'Пользователи','url' => ['/admin/user/index']],
-                        ['label' => 'Категории','url' => ['/admin/category/index']],
-                        ['label' => 'Статьи','url' => ['/admin/post/index']],
-                        ],
-                    ]:
+                    'items' => [
+                        ['label' => 'Пользователи', 'url' => ['/admin/user/index']],
+                        ['label' => 'Категории', 'url' => ['/admin/category/index']],
+                        ['label' => 'Статьи', 'url' => ['/admin/post/index']],
+                    ],
+                ] :
                 false,
             Yii::$app->user->can(AdminRbac::PERMISSION_USER_PANEL) ?
                 ['label' => Yii::t('app', 'Личный кабинет'), 'url' => ['/profile/index']] :
                 false,
 
             Yii::$app->user->isGuest ? (
-                ['label' => 'Вход', 'url' => ['/login']]
+            ['label' => 'Вход', 'url' => ['/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')

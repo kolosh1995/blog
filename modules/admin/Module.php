@@ -3,8 +3,6 @@
 namespace app\modules\admin;
 
 use app\modules\admin\rbac\Rbac;
-use Yii;
-use app\modules\admin\rbac\Rbac as AdminRbac;
 use yii\filters\AccessControl;
 
 /**
@@ -26,6 +24,7 @@ class Module extends \yii\base\Module
             ],
         ];
     }
+
     /**
      * {@inheritdoc}
      */
@@ -37,7 +36,6 @@ class Module extends \yii\base\Module
     public function init()
     {
         parent::init();
-
         // custom initialization code goes here
     }
 }

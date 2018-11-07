@@ -7,9 +7,8 @@
  */
 
 namespace app\models;
+
 use yii\base\Model;
-
-
 
 class SignupForm extends Model
 {
@@ -20,9 +19,10 @@ class SignupForm extends Model
     {
         return [
             [['username', 'password'], 'required', 'message' => 'Заполните поле'],
-            ['username', 'unique', 'targetClass' => User::className(),  'message' => 'Этот логин уже занят'],
+            ['username', 'unique', 'targetClass' => User::className(), 'message' => 'Этот логин уже занят'],
         ];
     }
+
     public function attributeLabels()
     {
         return [

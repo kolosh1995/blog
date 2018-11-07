@@ -23,5 +23,4 @@ class m181107_101506_update_user_table extends Migration
         $this->alterColumn('user', 'auth_key', $this->string(32)->notNull());
     }
 
-  
 }

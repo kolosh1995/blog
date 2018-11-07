@@ -21,8 +21,8 @@ class MenuWidget extends Widget
     public function init()
     {
         parent::init();
-        if ( $this->tpl === null ) {
-             $this->tpl = 'menu';
+        if ($this->tpl === null) {
+            $this->tpl = 'menu';
         }
         $this->tpl .= '.php';
     }
@@ -32,15 +32,14 @@ class MenuWidget extends Widget
         $this->date = Category::find()->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
-       // debug($this->date);
+        // debug($this->date);
         return $this->menuHtml;
     }
 
     protected function getMenuHtml($tree)
     {
         $str = '';
-        foreach ($tree as $category)
-        {
+        foreach ($tree as $category) {
             $str .= $this->catToTemplate($category);
         }
         return $str;
@@ -56,7 +55,7 @@ class MenuWidget extends Widget
     protected function getTree()
     {
         $tree = [];
-        foreach ($this->date as $id=>&$node) {
+        foreach ($this->date as $id => &$node) {
             if (!$node['parent_id'])
                 $tree[$id] = &$node;
             else

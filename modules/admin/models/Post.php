@@ -2,7 +2,6 @@
 
 namespace app\modules\admin\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
@@ -25,7 +24,7 @@ use yii\db\ActiveRecord;
  */
 class Post extends ActiveRecord
 {
-    const STATUS_NEW = 'new' ;
+    const STATUS_NEW = 'new';
     const STATUS_PUBLISHED = 'published';
     const STATUS_INACTIVE = 'inactive';
 
@@ -40,7 +39,7 @@ class Post extends ActiveRecord
 
     public function behaviors()
     {
-        return[
+        return [
             [
                 'class' => TimestampBehavior::className(),
                 'attributes' => [
@@ -50,6 +49,7 @@ class Post extends ActiveRecord
             ],
         ];
     }
+
     /**
      * {@inheritdoc}
      */

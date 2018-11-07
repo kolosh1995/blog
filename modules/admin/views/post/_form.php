@@ -7,6 +7,7 @@ use app\modules\admin\models\Category;
 use mihaildev\ckeditor\CKEditor;
 use mihaildev\elfinder\ElFinder;
 use app\components\PostHelpers;
+
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Post */
 /* @var $form yii\widgets\ActiveForm */

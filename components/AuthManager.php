@@ -12,6 +12,7 @@ use app\models\User;
 use yii\rbac\Assignment;
 use yii\rbac\PhpManager;
 use Yii;
+
 class AuthManager extends PhpManager
 {
     public function getAssignments($userId)

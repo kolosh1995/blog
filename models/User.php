@@ -1,6 +1,7 @@
 <?php
 
 namespace app\models;
+
 use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -42,7 +43,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        return static::findOne(['username'=>$username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -77,6 +78,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
         ];
     }
+
     /**
      * Validates password
      *
@@ -86,10 +88,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
 
     public function validatePassword($password)
     {
-        return \Yii::$app->security->validatePassword($password,$this->password);
+        return \Yii::$app->security->validatePassword($password, $this->password);
     }
 
-    public function generateAuthKey(){
+    public function generateAuthKey()
+    {
         $this->auth_key = \Yii::$app->security->generateRandomString();
     }
 }

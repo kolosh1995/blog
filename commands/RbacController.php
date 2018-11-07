@@ -12,7 +12,6 @@ use Yii;
 use yii\console\Controller;
 use app\modules\admin\rbac\Rbac as AdminRbac;
 
-
 class RbacController extends Controller
 {
     public function actionInit()

@@ -5,6 +5,7 @@
  * Date: 19.10.2018
  * Time: 11:15
  */
+
 namespace app\modules\admin\rbac;
 
 class Rbac

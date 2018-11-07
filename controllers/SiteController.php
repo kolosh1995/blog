@@ -34,7 +34,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post','get'],
+                    'logout' => ['post', 'get'],
                 ],
             ],
         ];
@@ -67,16 +67,17 @@ class SiteController extends Controller
     }
 
 //регистрация
-    public function actionSignup(){
+    public function actionSignup()
+    {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
         $model = new SignupForm();
-        if($model->load(\Yii::$app->request->post()) && $model->validate()){
+        if ($model->load(\Yii::$app->request->post()) && $model->validate()) {
             $user = new User();
             $user->username = $model->username;
             $user->password = \Yii::$app->security->generatePasswordHash($model->password);
-            if($user->save()){
+            if ($user->save()) {
                 return $this->goHome();
             }
         }
@@ -139,6 +140,5 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-
 
 }

@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
@@ -33,7 +32,7 @@ class Post extends ActiveRecord
 
     public function behaviors()
     {
-        return[
+        return [
             [
                 'class' => TimestampBehavior::className(),
                 'attributes' => [

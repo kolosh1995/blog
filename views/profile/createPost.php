@@ -19,13 +19,14 @@ mihaildev\elfinder\Assets::noConflict($this);
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name')) ?>
+    <?= $form->field($model, 'category_id')
+        ->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name')) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?php
     echo $form->field($model, 'description')->widget(CKEditor::className(), [
-            'editorOptions' => ElFinder::ckeditorOptions('elfinder', [])
+        'editorOptions' => ElFinder::ckeditorOptions('elfinder', [])
     ]);
 
     ?>

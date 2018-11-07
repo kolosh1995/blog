@@ -7,6 +7,7 @@
  */
 
 namespace app\commands;
+
 use app\models\User;
 use Yii;
 use yii\console\Controller;
@@ -18,10 +19,10 @@ class RolesController extends Controller
     //Ролі для юзерів
     public function actionAssign()
     {
-        $username = $this->prompt('Username:', ['required'=>true]);
+        $username = $this->prompt('Username:', ['required' => true]);
         $user = $this->findModel($username);
         $roleName = $this->select('Role:', ArrayHelper::map(Yii::$app->authManager->getRoles(), 'name', 'description'));
-        $authManager = Yii::$app -> getAuthManager();
+        $authManager = Yii::$app->getAuthManager();
         $role = $authManager->getRole($roleName);
         $authManager->assign($role, $user->id);
         $this->stdout('Done!' . PHP_EOL);
@@ -34,9 +35,9 @@ class RolesController extends Controller
         $roleName = $this->select('Role:', ArrayHelper::merge(
             ['all' => 'All Roles'],
             ArrayHelper::map(Yii::$app->authManager->getRolesByUser($user->id), 'name', 'description')));
-        $authManager = Yii::$app -> getAuthManager();
+        $authManager = Yii::$app->getAuthManager();
         if ($roleName == 'all') {
-            $authManager -> revokeAll($user->id);
+            $authManager->revokeAll($user->id);
         } else {
             $role = $authManager->getRole($roleName);
             $authManager->revoke($role, $user->id);

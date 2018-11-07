@@ -24,14 +24,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'attribute' => 'author_id',
-                'value' => function($model){
+                'value' => function ($model) {
                     return $model->author->username;
                 },
             ],
 
             [
                 'attribute' => 'category_id',
-                'value' => function($model){
+                'value' => function ($model) {
                     return $model->category->name;
                 },
             ],

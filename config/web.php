@@ -7,8 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'language'=>'ru-RU',
-    //'layout' => 'main',
+    'language' => 'ru-RU',
     'modules' => [
         'admin' => [
             'class' => 'app\modules\admin\Module',
@@ -16,13 +15,13 @@ $config = [
     ],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'kvXaBQItX7OjiWauaFtkQHx-PvKOwtdI',
-            'baseUrl'=>'',
+            'baseUrl' => '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -59,16 +58,14 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action:(about|contact|login|signup)>' =>'site/<action>',
+                '<action:(about|contact|login|signup)>' => 'site/<action>',
                 '<action>' => 'profile/<action>',
                 'post/view/<id:\d+>' => 'post/view',
                 'post/update/<id:\d+>' => 'post/update',
                 'category/<id:\d+>' => 'category/view',
                 'page/<page:\d+>' => 'post/index',
-
             ],
         ],
-        //////////////////////////////////////////???????????
         'i18n' => [
             'translations' => [
                 'app' => [
@@ -77,15 +74,13 @@ $config = [
                 ],
             ],
         ],
-        //////////////////////////////////////////////////
     ],
     'controllerMap' => [
         'elfinder' => [
             'class' => 'mihaildev\elfinder\PathController',
             'access' => ['@'],
             'root' => [
-                'baseUrl'=>'/web',
-//                'basePath'=>'@webroot',
+                'baseUrl' => '/web',
                 'path' => 'upload/global',
                 'name' => 'Global'
             ],

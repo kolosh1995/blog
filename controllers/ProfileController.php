@@ -12,7 +12,6 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ProfileController implements the CRUD actions for User model.
@@ -41,7 +40,7 @@ class ProfileController extends Controller
     {
         $id = \Yii::$app->user->identity->id;
         $postDataProvider = new ActiveDataProvider([
-           'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
+            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
             'pagination' => [
                 'pageSize' => 5,
                 'forcePageParam' => false,
@@ -68,7 +67,8 @@ class ProfileController extends Controller
             ]);
         }
     }
-    public function actionCreate ()
+
+    public function actionCreate()
     {
         $model = new Post();
         $model->author_id = Yii::$app->user->id;

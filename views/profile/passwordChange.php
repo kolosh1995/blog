@@ -1,8 +1,7 @@
-<?php
+a<?php
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-
 
 $this->title = Yii::t('app', 'Смена пароля');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Личный кабинет'), 'url' => ['index']];
