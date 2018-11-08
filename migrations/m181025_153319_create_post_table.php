@@ -27,7 +27,7 @@ class m181025_153319_create_post_table extends Migration
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
             'image' => $this->integer(),
-            'slug'=> $this->string()->notNull(),//URL
+            'slug'=> $this->string(),//URL
         ], $tableOptions);
         //Cвязи autрor_id
         $this->createIndex(
