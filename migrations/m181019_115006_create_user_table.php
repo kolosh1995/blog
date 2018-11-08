@@ -27,8 +27,8 @@ class m181019_115006_create_user_table extends Migration
             'password_reset_token' => $this->string()->unique(),
             'email' => $this->string(),
             'status' => $this->smallInteger()->notNull()->defaultValue(10),
-            'created_at' => $this->integer(),
-            'updated_at' => $this->integer(),
+            'created_at' => $this->integer()->notNull(),
+            'updated_at' => $this->integer()->notNull(),
         ], $tableOptions);
     }
     public function down()

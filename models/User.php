@@ -22,6 +22,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
             ],
         ];
     }
+
     public static function tableName()
     {
         return 'user';
@@ -45,6 +46,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             ['role', 'string', 'max' => 64],
+            [['username'], 'unique'],
             [['status', 'created_at', 'updated_at'], 'integer'],
         ];
     }
