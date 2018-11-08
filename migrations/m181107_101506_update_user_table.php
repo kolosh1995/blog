@@ -22,7 +22,7 @@ class m181107_101506_update_user_table extends Migration
      */
     public function Down()
     {
-        
+
     }
 
 }

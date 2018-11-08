@@ -42,7 +42,7 @@ class PostController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Post::find()->where(['status' => Post::STATUS_PUBLISHED]),
+            'query' => Post::find()->where(['author_id' => Yii::$app->user->id]),
             'pagination' => [
                 'pageSize' => 4,
                 'pageSizeParam' => false,
@@ -82,7 +82,7 @@ class PostController extends Controller
             return $this->redirect(['index', 'id' => $model->id]);
         }
 
-        return $this->render('createPost', [
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
