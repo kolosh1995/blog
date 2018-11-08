@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface
@@ -9,6 +10,18 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     const STATUS_ACTIVE = 10;
     const STATUS_BANED = 0;
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at']
+                ],
+            ],
+        ];
+    }
     public static function tableName()
     {
         return 'user';
@@ -32,6 +45,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             ['role', 'string', 'max' => 64],
+            [['status', 'created_at', 'updated_at'], 'integer'],
         ];
     }
 

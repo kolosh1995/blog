@@ -2,6 +2,9 @@
 
 namespace app\modules\admin\models;
 
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "user".
  *
@@ -18,8 +21,21 @@ namespace app\modules\admin\models;
  *
  * @property Post[] $posts
  */
-class User extends \yii\db\ActiveRecord
+class User extends ActiveRecord
 {
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at']
+                ],
+            ],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -34,7 +50,7 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['username', 'auth_key', 'password', 'created_at', 'updated_at'], 'required'],
+            [['username', 'auth_key', 'password'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password', 'password_reset_token', 'email'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],

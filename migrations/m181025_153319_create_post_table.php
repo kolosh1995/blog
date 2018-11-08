@@ -24,8 +24,8 @@ class m181025_153319_create_post_table extends Migration
             'title' => $this->string()->notNull(), // Название статьи
             'description' => $this->text()->notNull(),//Описание
             'status' => $this->string()->notNull()->defaultValue('new'),//Статус статьи
-            'created_at' => $this->integer()->notNull(),
-            'updated_at' => $this->integer()->notNull(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
             'image' => $this->integer(),
             'slug'=> $this->string()->notNull(),//URL
         ], $tableOptions);

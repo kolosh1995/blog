@@ -13,6 +13,7 @@ class m181107_101506_update_user_table extends Migration
     public function Up()
     {
         $this->alterColumn('user', 'auth_key', $this->string(32));
+
     }
 
     /**

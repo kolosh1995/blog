@@ -16,14 +16,7 @@ class m181107_150540_add_user extends Migration
             ['admin', \Yii::$app->security->generatePasswordHash(12345), 'admin'],
             ['user1', \Yii::$app->security->generatePasswordHash(12345), 'user'],
             ['user2', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user3', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user4', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user5', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user6', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user7', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user8', \Yii::$app->security->generatePasswordHash(12345), 'user'],
-            ['user9', \Yii::$app->security->generatePasswordHash(12345), 'user']
-        ]);
+            ]);
         $this->batchInsert('category', ['name'],[
             ['Исследования'],
             ['Ремонт и дизайн'],

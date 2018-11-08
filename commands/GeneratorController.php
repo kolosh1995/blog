@@ -50,7 +50,7 @@ class GeneratorController extends Controller
             echo 'added, id: ' . $category->id . PHP_EOL;
         }
 
-        for ($i = 10; $i <= 15; $i++) {
+        for ($i = 4; $i <= 10; $i++) {
             $user = new User();
             $user->username = 'user' . $i;
             $user->password = \Yii::$app->security->generatePasswordHash(12345);
