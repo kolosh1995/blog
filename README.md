@@ -8,3 +8,4 @@
 7. generator categories, posts and user:
     run: php yii generator/gen
     
+    
