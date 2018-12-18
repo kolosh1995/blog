@@ -18,7 +18,6 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?php $form = ActiveForm::begin(); ?>
 
-
     <?= $form->field($model, 'category_id')
         ->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name')) ?>
 

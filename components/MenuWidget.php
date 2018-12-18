@@ -32,7 +32,6 @@ class MenuWidget extends Widget
         $this->date = Category::find()->indexBy('id')->asArray()->all();
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
-        // debug($this->date);
         return $this->menuHtml;
     }
 
