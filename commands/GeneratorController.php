@@ -46,6 +46,7 @@ class GeneratorController extends Controller
         for ($i = 1; $i <= 50; $i++) {
             $category = new Category();
             $category->name = $res = $input[array_rand($input)];
+            $category->parent_id = rand(1, 5);
             $category->save();
             echo 'added, id: ' . $category->id . PHP_EOL;
         }
