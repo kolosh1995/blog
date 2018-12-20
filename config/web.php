@@ -62,6 +62,7 @@ $config = [
                 '<action>' => 'profile/<action>',
                 'post/view/<id:\d+>/' => 'post/view',
                 'post/update/<id:\d+>' => 'post/update',
+                'category/<name>/page/<page:\d+>' => 'category/view',
                 'category/<name>' => 'category/view',
                 'admin/users' => 'admin/user/index',
                 'admin/category' => 'admin/category/index',
