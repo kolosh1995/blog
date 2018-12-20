@@ -14,9 +14,9 @@ use yii\web\Controller;
 
 class CategoryController extends Controller
 {
-    public function actionView($id)
+    public function actionView($name)
     {
-        $query = Post::find()->where(['category_id' => $id]);
+        $query = Post::find()->joinWith('category')->where(['category.name' => $name]);
         $pages = new Pagination(['totalCount' => $query->count(),
             'pageSize' => 5,
             'forcePageParam' => false,

@@ -60,10 +60,16 @@ $config = [
             'rules' => [
                 '<action:(about|contact|login|signup)>' => 'site/<action>',
                 '<action>' => 'profile/<action>',
-                'post/view/<id:\d+>' => 'post/view',
+                'post/view/<id:\d+>/' => 'post/view',
                 'post/update/<id:\d+>' => 'post/update',
-                'category/<id:\d+>/<name>' => 'category/view',
+                'category/<name>' => 'category/view',
+                'admin/users' => 'admin/user/index',
+                'admin/category' => 'admin/category/index',
+                'admin/category/update/<id:\d+>' => 'admin/category/update',
+                'admin/category/view/<id:\d+>' => 'admin/category/view',
                 'page/<page:\d+>' => 'post/index',
+
+
             ],
         ],
         'i18n' => [
