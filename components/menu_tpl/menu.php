@@ -5,7 +5,6 @@ use yii\helpers\Url;
 ?>
 
 <li>
-
     <a href="<?= Url::to(['category/view', 'name' => $category['name']]) ?>">
         <?= $category['name'] ?>
         <?php if (isset($category['childs'])): ?>

@@ -26,4 +26,21 @@ class CategoryController extends Controller
             ->all();
         return $this->render('view', compact('posts', 'pages'));
     }
+
+    public function actionPost($id)
+    {
+        return $this->render('post', [
+
+            'model' => $this->findModel($id),
+        ]);
+    }
+
+    protected function findModel($id)
+    {
+        if (($model = Post::findOne($id)) !== null) {
+            return $model;
+        }
+
+    }
+
 }
